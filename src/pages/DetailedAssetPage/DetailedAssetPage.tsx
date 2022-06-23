@@ -36,23 +36,23 @@ const DetailedAssetPage: React.FunctionComponent<Props> = () => {
   const chartPeriodButtons = [
     {
       paramater: "1",
-      label: "1-Day",
+      label: "line_chart_button_1d",
     },
     {
       paramater: "14",
-      label: "14-Days",
+      label: "line_chart_button_14d",
     },
     {
       paramater: "30",
-      label: "1-Month",
+      label: "line_chart_button_1m",
     },
     {
       paramater: "60",
-      label: "2-Months",
+      label: "line_chart_button_2m",
     },
     {
       paramater: "90",
-      label: "3-Months",
+      label: "line_chart_button_3m",
     },
   ];
 
@@ -119,7 +119,7 @@ const DetailedAssetPage: React.FunctionComponent<Props> = () => {
                   key={index}
                   onClick={() => fetchChartData(button.paramater)}
                 >
-                  {button.label}
+                  <FormattedMessage id={button.label} />
                 </button>
               );
             })}

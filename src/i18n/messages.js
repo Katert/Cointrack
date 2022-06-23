@@ -35,6 +35,11 @@ export const messages = {
 
     // Detailed asset page
     no_description_available: "Geen omschrijving beschikbaar",
+    line_chart_button_1d: "1-Dag",
+    line_chart_button_14d: "14-Dagen",
+    line_chart_button_1m: "1-Maand",
+    line_chart_button_2m: "2-Maanden",
+    line_chart_button_3m: "3-Maanden",
   },
 
   [LOCALES.ENGLISH]: {
@@ -71,5 +76,10 @@ export const messages = {
 
     // Detailed asset page
     no_description_available: "No description available",
+    line_chart_button_1d: "1-Day",
+    line_chart_button_14d: "14-Days",
+    line_chart_button_1m: "1-Month",
+    line_chart_button_2m: "2-Months",
+    line_chart_button_3m: "3-Months",
   },
 };
