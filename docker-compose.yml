@@ -1,0 +1,9 @@
+version: "2"
+services:
+  app:
+    container_name: cointrack
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80

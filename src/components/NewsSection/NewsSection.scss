@@ -1,0 +1,58 @@
+@import "../../global.scss";
+
+.news-section-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .news-section-heading {
+    margin-left: 2rem;
+    margin-top: 2rem;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+    }
+  }
+
+  .news-list-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .news-list-container {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+    height: 100%;
+
+    ul {
+      display: table;
+      list-style: none;
+      width: 90%;
+      display: table;
+
+      li {
+        margin-bottom: 12px;
+        font-weight: 600;
+        line-height: 1.6;
+        padding-bottom: 0.5rem;
+
+        li:not(:last-child) {
+          padding-bottom: 0.5rem;
+        }
+
+        a {
+          color: black;
+          transition: 0.2s;
+          text-decoration: none;
+        }
+
+        a:hover {
+          color: $green;
+        }
+      }
+    }
+  }
+}

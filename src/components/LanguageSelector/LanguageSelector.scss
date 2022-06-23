@@ -1,0 +1,32 @@
+@import "../../global.scss";
+
+.language-selector-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: black;
+  border-radius: 50px;
+  color: $light-font-color;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  label {
+    margin-bottom: 0.5rem;
+  }
+
+  select {
+    appearance: none;
+    border: none;
+    background-color: initial;
+    color: $light-font-color;
+    font-weight: 900;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+
+.language-selector-container:hover {
+  background-color: $green;
+}

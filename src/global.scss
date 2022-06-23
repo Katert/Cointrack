@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+// Light mode constants
+$dark-background-color: linear-gradient(
+  189deg,
+  rgba(75, 80, 122, 1) 0%,
+  rgba(0, 0, 0, 1) 100%
+);
+$dark-font-color: rgb(6, 8, 18);
+$dark-border-color: rgb(201, 201, 201);
+
+// Dark mode constants
+$light-background-color: linear-gradient(
+  169deg,
+  rgba(249, 249, 249, 1) 0%,
+  rgba(205, 221, 235, 1) 100%
+);
+$light-font-color: white;
+$light-border-color: rgb(255, 255, 255);
+
+// General constants
+$blue: rgb(27, 27, 255);
+$green: rgb(0, 217, 152);
+$dark-table-background: rgb(5, 5, 29);
+$light-table-background: rgb(255, 255, 255);
+
+.app {
+  width: 100%;
+  height: 100%;
+  background: none;
+  background: $light-background-color;
+  color: $dark-font-color;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cliploader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
