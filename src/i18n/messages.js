@@ -26,7 +26,7 @@ export const messages = {
     news_section_heading: "Nieuws",
 
     // Home: Crypto top 100 table
-    crypto_table_heading: "Rang: Top 100",
+    crypto_table_heading: "Rang",
 
     // Footer:
     footer_text: "Handgemaakt 🔨 door Wesley Kater",
@@ -67,7 +67,7 @@ export const messages = {
     news_section_heading: "News",
 
     // Home: Crypto top 100 table
-    crypto_table_heading: "Ranking: Top 100",
+    crypto_table_heading: "Ranking",
 
     // Footer:
     footer_text: "Handcrafted 🔨 by Wesley Kater",

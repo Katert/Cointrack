@@ -26,23 +26,33 @@ const Home: React.FunctionComponent<Props> = (props) => {
   const [data, setData] = useState<CryptoTableData[]>();
   const [trendingData, setTrendingData] = useState<TrendingCoin[]>();
   const [newsData, setNewsData] = useState<NewsData>();
+  const [tablePage, setTablePage] = useState<string>("1");
   const newsQueryValue: string = "crypto";
 
-  const fetchData = async () => {
+  const fetchRankingTableData = async (pagenumber?: string) => {
     try {
-      // Fetch table ranking data
       const tableData = await axios.get(
-        `${COINGECKO_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+        `${COINGECKO_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${tablePage}&sparkline=false`
       );
       setData(tableData.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-      // Fetch trending coins
+  const fetchTrendingTableData = async () => {
+    try {
       const trendingData = await axios.get(
         `${COINGECKO_BASE_URL}/search/trending`
       );
       setTrendingData(trendingData.data.coins);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-      // Fetch news data
+  const fetchNewsData = async () => {
+    try {
       const newsApiOptions = {
         method: "GET",
         url: NEWSCATCHER_BASE_URL,
@@ -61,13 +71,15 @@ const Home: React.FunctionComponent<Props> = (props) => {
       await axios.request(newsApiOptions).then((res) => {
         setNewsData(res.data);
       });
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchData();
+    fetchRankingTableData();
+    fetchTrendingTableData();
+    fetchNewsData();
   }, []);
 
   return (
@@ -82,11 +94,31 @@ const Home: React.FunctionComponent<Props> = (props) => {
       </div>
       <div className="home-container-bottom-section">
         <div className="crypto-top-list-container">
-          <span className="crypto-list-heading">
-            <h1>
-              🏆 <FormattedMessage id="crypto_table_heading" />
-            </h1>
-          </span>
+          <div className="crypto-list-top-section">
+            <span className="crypto-list-heading">
+              <h1>
+                🏆 <FormattedMessage id="crypto_table_heading" />
+              </h1>
+            </span>
+            <div className="navigate-page-input">
+              <span>
+                <button onClick={() => fetchRankingTableData(tablePage)}>
+                  Go to page
+                </button>
+              </span>
+              <span>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  pattern="[0-9]"
+                  placeholder={tablePage}
+                  onChange={(e) => setTablePage(e.target.value)}
+                  min={1}
+                />
+              </span>
+            </div>
+          </div>
+
           <CryptoTable setData={setData} data={data} navigate={navigate} />
         </div>
       </div>
