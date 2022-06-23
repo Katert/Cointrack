@@ -38,7 +38,11 @@ const NavBar: React.FunctionComponent<Props> = (props) => {
           currentLocale={currentLocale}
         />
         <span className="navbar-button github-button">
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/Katert/Cointrack"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FontAwesomeIcon icon={faGithub} />
           </a>
         </span>
