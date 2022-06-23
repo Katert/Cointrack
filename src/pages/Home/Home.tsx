@@ -29,7 +29,7 @@ const Home: React.FunctionComponent<Props> = (props) => {
   const [tablePage, setTablePage] = useState<string>("1");
   const newsQueryValue: string = "crypto";
 
-  const fetchRankingTableData = async (pagenumber?: string) => {
+  const fetchRankingTableData = async () => {
     try {
       const tableData = await axios.get(
         `${COINGECKO_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${tablePage}&sparkline=false`
@@ -102,7 +102,7 @@ const Home: React.FunctionComponent<Props> = (props) => {
             </span>
             <div className="navigate-page-input">
               <span>
-                <button onClick={() => fetchRankingTableData(tablePage)}>
+                <button onClick={() => fetchRankingTableData()}>
                   Go to page
                 </button>
               </span>
