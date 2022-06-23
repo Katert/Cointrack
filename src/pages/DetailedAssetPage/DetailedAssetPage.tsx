@@ -18,7 +18,7 @@ const DetailedAssetPage: React.FunctionComponent<Props> = () => {
   const [assetData, setAssetData] = useState<AssetData>();
   const [priceData, setPriceData] = useState<PriceData>();
   const [dataIsLoading, setDataIsLoading] = useState<boolean>(false);
-  const defaultChartPeriod: string = "30";
+  const [selectedChartPeriod, setSelectedChartPeriod] = useState<string>("30");
 
   const fetchInfoData = async () => {
     setDataIsLoading(true);
@@ -35,23 +35,23 @@ const DetailedAssetPage: React.FunctionComponent<Props> = () => {
 
   const chartPeriodButtons = [
     {
-      paramater: "1",
+      parameter: "1",
       label: "line_chart_button_1d",
     },
     {
-      paramater: "14",
+      parameter: "14",
       label: "line_chart_button_14d",
     },
     {
-      paramater: "30",
+      parameter: "30",
       label: "line_chart_button_1m",
     },
     {
-      paramater: "60",
+      parameter: "60",
       label: "line_chart_button_2m",
     },
     {
-      paramater: "90",
+      parameter: "90",
       label: "line_chart_button_3m",
     },
   ];
@@ -65,7 +65,7 @@ const DetailedAssetPage: React.FunctionComponent<Props> = () => {
 
   useEffect(() => {
     fetchInfoData();
-    fetchChartData(defaultChartPeriod);
+    fetchChartData(selectedChartPeriod);
   }, []);
 
   return (
@@ -117,7 +117,15 @@ const DetailedAssetPage: React.FunctionComponent<Props> = () => {
               return (
                 <button
                   key={index}
-                  onClick={() => fetchChartData(button.paramater)}
+                  style={
+                    selectedChartPeriod === button.parameter
+                      ? { backgroundColor: "rgb(0, 217, 152)" }
+                      : { backgroundColor: "black" }
+                  }
+                  onClick={() => {
+                    setSelectedChartPeriod(button.parameter);
+                    fetchChartData(button.parameter);
+                  }}
                 >
                   <FormattedMessage id={button.label} />
                 </button>
