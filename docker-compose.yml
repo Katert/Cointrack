@@ -3,7 +3,7 @@ services:
   app:
     container_name: cointrack
     build:
-      context: .
       dockerfile: Dockerfile
+      context: .
     ports:
       - 80:80

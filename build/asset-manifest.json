@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8afb299c.css",
+    "main.js": "/static/js/main.04977f0e.js",
+    "static/js/787.eab2d503.chunk.js": "/static/js/787.eab2d503.chunk.js",
+    "static/media/Illustration.png": "/static/media/Illustration.2e94e550ddab7d290a21.png",
+    "static/media/footer-coingecko-logo.png": "/static/media/footer-coingecko-logo.a5fe69b7f0de646665b4.png",
+    "index.html": "/index.html",
+    "main.8afb299c.css.map": "/static/css/main.8afb299c.css.map",
+    "main.04977f0e.js.map": "/static/js/main.04977f0e.js.map",
+    "787.eab2d503.chunk.js.map": "/static/js/787.eab2d503.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8afb299c.css",
+    "static/js/main.04977f0e.js"
+  ]
+}
