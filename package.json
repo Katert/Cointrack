@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.0.5",
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
+    "chartjs-plugin-zoom": "^1.2.1",
     "framer-motion": "^6.3.11",
     "i": "^0.3.7",
     "npm": "^8.12.2",

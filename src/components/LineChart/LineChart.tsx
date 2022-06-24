@@ -2,8 +2,9 @@ import React, { useMemo } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 import "./LineChart.scss";
+import zoomPlugin from "chartjs-plugin-zoom";
 import { PriceData } from "../../pages/DetailedAssetPage/interfaces";
-Chart.register(...registerables);
+Chart.register(...registerables, zoomPlugin);
 
 interface Props {
   label?: string;
@@ -34,12 +35,25 @@ const LineChart: React.FunctionComponent<Props> = (props) => {
         options={{
           elements: {
             point: {
-              radius: 0.5,
+              radius: 0.75,
             },
           },
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
+            zoom: {
+              pan: {
+                enabled: true,
+                mode: "x",
+              },
+              zoom: {
+                wheel: {
+                  enabled: true,
+                },
+
+                mode: "x",
+              },
+            },
             tooltip: {
               backgroundColor: "black",
             },
