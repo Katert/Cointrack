@@ -16,6 +16,8 @@ import CryptoTable from "../../components/CryptoTable/CryptoTable";
 import { NavigateFunction } from "react-router-dom";
 import CryptoTrendingTable from "../../components/CryptoTrendingTable/CryptoTrendingTable";
 import NewsSection from "../../components/NewsSection/NewsSection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   navigate: NavigateFunction;
@@ -26,14 +28,25 @@ const Home: React.FunctionComponent<Props> = (props) => {
   const [data, setData] = useState<CryptoTableData[]>();
   const [trendingData, setTrendingData] = useState<TrendingCoin[]>();
   const [newsData, setNewsData] = useState<NewsData>();
+  const [currentTablePage, setCurrentTablePage] = useState<string>("1");
   const [tablePage, setTablePage] = useState<string>("1");
   const newsQueryValue: string = "crypto";
 
-  const fetchRankingTableData = async () => {
+  const alreadyOnPage = (pageNumber: string) => {
+    if (pageNumber === currentTablePage) {
+      alert("You're already on this page.");
+      return true;
+    }
+
+    return false;
+  };
+
+  const fetchRankingTableData = async (pageNumber: string) => {
     try {
       const tableData = await axios.get(
-        `${COINGECKO_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${tablePage}&sparkline=false`
+        `${COINGECKO_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${pageNumber}&sparkline=false`
       );
+      setCurrentTablePage(pageNumber);
       setData(tableData.data);
     } catch (error) {
       console.log(error);
@@ -77,7 +90,7 @@ const Home: React.FunctionComponent<Props> = (props) => {
   };
 
   useEffect(() => {
-    fetchRankingTableData();
+    fetchRankingTableData(currentTablePage);
     fetchTrendingTableData();
     fetchNewsData();
   }, []);
@@ -101,20 +114,58 @@ const Home: React.FunctionComponent<Props> = (props) => {
               </h1>
             </span>
             <div className="navigate-page-input">
-              <span>
-                <button onClick={() => fetchRankingTableData()}>
-                  Go to page
+              <div className="page-navigation-buttons-container">
+                <button
+                  value={parseInt(currentTablePage) - 1}
+                  onClick={(e) => {
+                    if (parseInt(currentTablePage) - 1 === 0) {
+                      return;
+                    }
+
+                    setCurrentTablePage(
+                      (parseInt(currentTablePage) - 1).toString()
+                    );
+                    fetchRankingTableData(e.currentTarget.value);
+                  }}
+                  className="page-navigate-button"
+                >
+                  <FontAwesomeIcon icon={faArrowLeft} />
                 </button>
-              </span>
+                <button
+                  value={parseInt(currentTablePage) + 1}
+                  onClick={(e) => {
+                    setCurrentTablePage(
+                      (parseInt(currentTablePage) + 1).toString()
+                    );
+                    fetchRankingTableData(e.currentTarget.value);
+                  }}
+                  className="page-navigate-button"
+                >
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </button>
+              </div>
               <span>
                 <input
                   type="number"
                   inputMode="numeric"
                   pattern="[0-9]"
-                  placeholder={tablePage}
+                  defaultValue={currentTablePage}
+                  key={currentTablePage}
                   onChange={(e) => setTablePage(e.target.value)}
                   min={1}
                 />
+              </span>
+              <span>
+                <button
+                  className="go-to-page-button"
+                  onClick={() => {
+                    if (!alreadyOnPage(tablePage)) {
+                      fetchRankingTableData(tablePage);
+                    }
+                  }}
+                >
+                  Go to page
+                </button>
               </span>
             </div>
           </div>

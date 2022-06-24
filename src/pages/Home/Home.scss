@@ -58,11 +58,38 @@
           justify-content: center;
           align-items: center;
 
+          .page-navigation-buttons-container {
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .page-navigate-button {
+              background-color: black;
+              color: white;
+              padding: 1rem;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              transition: 0.2s;
+            }
+
+            .page-navigate-button:last-child {
+              margin-right: 0;
+            }
+
+            .page-navigate-button:hover {
+              background-color: $green;
+            }
+          }
+
           button {
             border: none;
             padding: 1rem;
             border-radius: 25px;
-            margin-right: 1rem;
+            margin-left: 1rem;
             background-color: black;
             color: white;
             font-weight: 800;
@@ -81,7 +108,8 @@
             background-color: black;
             color: white;
             font-weight: 800;
-            width: 40px;
+            width: 30px;
+            text-align: center;
           }
 
           input::placeholder {
