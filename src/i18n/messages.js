@@ -24,6 +24,7 @@ export const messages = {
 
     // Home: News section
     news_section_heading: "Nieuws",
+    go_to_page_button: "Ga naar pagina",
 
     // Home: Crypto top 100 table
     crypto_table_heading: "Rang",
@@ -65,6 +66,7 @@ export const messages = {
 
     // Home: News section
     news_section_heading: "News",
+    go_to_page_button: "Go to page",
 
     // Home: Crypto top 100 table
     crypto_table_heading: "Ranking",

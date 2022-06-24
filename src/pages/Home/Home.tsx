@@ -41,6 +41,19 @@ const Home: React.FunctionComponent<Props> = (props) => {
     return false;
   };
 
+  const navigateToPreviousPage = (previousPage: string) => {
+    if (parseInt(currentTablePage) - 1 === 0) {
+      return;
+    }
+    setCurrentTablePage((parseInt(currentTablePage) - 1).toString());
+    fetchRankingTableData(previousPage);
+  };
+
+  const navigateToNextPage = (nextPage: string) => {
+    setCurrentTablePage((parseInt(currentTablePage) + 1).toString());
+    fetchRankingTableData(nextPage);
+  };
+
   const fetchRankingTableData = async (pageNumber: string) => {
     try {
       const tableData = await axios.get(
@@ -117,28 +130,14 @@ const Home: React.FunctionComponent<Props> = (props) => {
               <div className="page-navigation-buttons-container">
                 <button
                   value={parseInt(currentTablePage) - 1}
-                  onClick={(e) => {
-                    if (parseInt(currentTablePage) - 1 === 0) {
-                      return;
-                    }
-
-                    setCurrentTablePage(
-                      (parseInt(currentTablePage) - 1).toString()
-                    );
-                    fetchRankingTableData(e.currentTarget.value);
-                  }}
+                  onClick={(e) => navigateToPreviousPage(e.currentTarget.value)}
                   className="page-navigate-button"
                 >
                   <FontAwesomeIcon icon={faArrowLeft} />
                 </button>
                 <button
                   value={parseInt(currentTablePage) + 1}
-                  onClick={(e) => {
-                    setCurrentTablePage(
-                      (parseInt(currentTablePage) + 1).toString()
-                    );
-                    fetchRankingTableData(e.currentTarget.value);
-                  }}
+                  onClick={(e) => navigateToNextPage(e.currentTarget.value)}
                   className="page-navigate-button"
                 >
                   <FontAwesomeIcon icon={faArrowRight} />
@@ -164,7 +163,7 @@ const Home: React.FunctionComponent<Props> = (props) => {
                     }
                   }}
                 >
-                  Go to page
+                  <FormattedMessage id="go_to_page_button" />
                 </button>
               </span>
             </div>
