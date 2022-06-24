@@ -44,7 +44,7 @@ const Home: React.FunctionComponent<Props> = (props) => {
   const fetchRankingTableData = async (pageNumber: string) => {
     try {
       const tableData = await axios.get(
-        `${COINGECKO_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${pageNumber}&sparkline=false`
+        `${COINGECKO_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=${pageNumber}&sparkline=false`
       );
       setCurrentTablePage(pageNumber);
       setData(tableData.data);
