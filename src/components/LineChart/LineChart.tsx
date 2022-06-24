@@ -1,9 +1,9 @@
+import "./LineChart.scss";
 import React, { useMemo } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart, registerables } from "chart.js";
-import "./LineChart.scss";
-import zoomPlugin from "chartjs-plugin-zoom";
 import { PriceData } from "../../pages/DetailedAssetPage/interfaces";
+import { Chart, registerables } from "chart.js";
+import zoomPlugin from "chartjs-plugin-zoom";
 Chart.register(...registerables, zoomPlugin);
 
 interface Props {

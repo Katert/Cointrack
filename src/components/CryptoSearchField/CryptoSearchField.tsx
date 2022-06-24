@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IntlShape } from "react-intl";
+import { Link } from "react-router-dom";
 import "./CryptoSearchField.scss";
 
 // Component imports
@@ -127,7 +128,7 @@ const CryptoSearchField: React.FunctionComponent<Props> = (props) => {
                   <li
                     key={index}
                     onClick={() => {
-                      window.location.href = `${window.location.origin}/asset/${result.id}`;
+                      navigate(`/asset/${result.id}`);
                       setInputIsExpanded(false);
                       setSearchInputValue("");
                     }}
