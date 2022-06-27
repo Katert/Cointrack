@@ -128,7 +128,7 @@ const CryptoSearchField: React.FunctionComponent<Props> = (props) => {
                   <li
                     key={index}
                     onClick={() => {
-                      navigate(`/asset/${result.id}`);
+                      window.location.href = `${window.location.origin}/asset/${result.id}`;
                       setInputIsExpanded(false);
                       setSearchInputValue("");
                     }}
